@@ -5,20 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Bumblebee.Implementation;
+using Bumblebee.Extensions;
 using Bumblebee.Interfaces;
 using Bumblebee.Setup;
 
 using OpenQA.Selenium;
 
 
-namespace TAC.ETEA.PageObjects
+namespace TAC.ETEA.PageObjects.Pages
 {
-    public class SPListViewPage: WebBlock
+    public class SPListViewPage: SPWebPage
     {
-        public SPListViewPage(Session session):base(session)
-        {
+        public SPListViewPage(Session session)
+            : base(session)
+        {}
 
-        }
+        public SPListViewPage(Session session, TimeSpan timeout)
+            : base(session, timeout)
+        {}
 
         public IClickable<SPListNewItemPage> NewItemLink
         {

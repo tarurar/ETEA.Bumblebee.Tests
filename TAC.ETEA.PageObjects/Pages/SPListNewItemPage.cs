@@ -10,14 +10,17 @@ using Bumblebee.Setup;
 
 using OpenQA.Selenium;
 
-namespace TAC.ETEA.PageObjects
+namespace TAC.ETEA.PageObjects.Pages
 {
-    public class SPListNewItemPage: WebBlock
+    public class SPListNewItemPage : SPWebPage
     {
-        public SPListNewItemPage(Session session):base(session)
-        {
-            
-        }
+        public SPListNewItemPage(Session session)
+            :base(session)
+        {}
+
+        public SPListNewItemPage(Session session, TimeSpan timeout)
+            : base(session, timeout)
+        {}
 
         public ITextField<SPListNewItemPage> TitleField
         {

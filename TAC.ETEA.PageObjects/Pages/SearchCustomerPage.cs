@@ -10,13 +10,12 @@ using Bumblebee.Setup;
 using Bumblebee.Extensions;
 using OpenQA.Selenium;
 
-namespace TAC.ETEA.PageObjects
+namespace TAC.ETEA.PageObjects.Pages
 {
-    public class SearchCustomerPage: WebBlock
+    public class SearchCustomerPage : SPWebPage
     {
         public SearchCustomerPage(Session session): base(session)
         {
-
         }
 
         public IClickable<SearchCustomerPage> IndividualTab

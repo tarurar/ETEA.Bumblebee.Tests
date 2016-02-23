@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using TAC.ETEA.PageObjects.Pages;
 using NUnit.Framework;
 using Bumblebee.Setup;
 using Bumblebee.Setup.DriverEnvironments;
@@ -18,13 +17,17 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 
-namespace TAC.ETEA.Tests.Bumblebee
+
+namespace TAC.ETEA.Tests
 {
     [TestFixture]
-    public class NewItemTests
+    public class ETEATest
     {
-        protected Session Session { get; private set; }
+        private static readonly string userName = "tacme4";
+        private static readonly string password = "\u0040bcd123";
+        private static readonly string mainPageUrl = "wingtipserver";
 
+        protected Session Session { get; private set; }
         [SetUp]
         public void SetUp()
         {
@@ -37,18 +40,9 @@ namespace TAC.ETEA.Tests.Bumblebee
             Session.End();
         }
 
-        //[Test]
-        public void CanAddNewItem_Bumblebee()
+        public static string GetMainPageUrl()
         {
-            var newItemTitle = Utility.RandomString(8);
-
-            Session
-                .NavigateTo<SPListViewPage>("http://Administrator:pass\u0040word1@intranet.wingtip.com/Lists/TestList/AllItems.aspx")
-                .NewItemLink
-                .Click<SPListNewItemPage>()
-                .TitleField.EnterText(newItemTitle)
-                .SaveRibbonButton.Click<SPListViewPage>()
-                .VerifyPresenceOf<SPListViewPage>("new item link", By.Id("idHomePageNewItem"));
+            return String.Format("http://{0}:{1}@{2}", userName, password, mainPageUrl);
         }
     }
 }
